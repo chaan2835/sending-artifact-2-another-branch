@@ -17,6 +17,20 @@ pipeline {
 		// sh "ls -R ${WORKSPACE}" (to list all files in workspace)	
       		      		}
     			}
+		
 		}
+		 stage('checking-branch') {
+                        steps {
+                                script {
+                        if (env.BRANCH_NAME == 'develop' || 'main'){
+                                echo "Runs on main (or) develop branch"
+                                                      }
+                        else {
+                                echo "run on release branch"
+                             }
+                                }
+                        }
+                }
+
 	}
 }		
